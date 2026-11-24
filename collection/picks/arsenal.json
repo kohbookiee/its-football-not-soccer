@@ -1,0 +1,13 @@
+{
+  "clubId": "arsenal",
+  "chant": "COME ON YOU GOONERS",
+  "picks": [
+    { "title": "File:Arsenal Stadium Highbury east facade.jpg", "imageType": "stadium" },
+    { "title": "File:Highbury West Stand.JPG", "imageType": "terrace" },
+    { "title": "File:Arsenal Stadium interior North Bank.jpg", "imageType": "terrace" },
+    { "title": "File:Arsenal Stadium interior Clock End.jpg", "imageType": "terrace" },
+    { "title": "File:Arsenal SheffieldWednesday2000a.jpg", "imageType": "match" },
+    { "title": "File:Highbury1.JPG", "imageType": "supporters" },
+    { "title": "File:Gunners, Highbury, N5 (4262674384).jpg", "imageType": "place" }
+  ]
+}

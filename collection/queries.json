@@ -1,0 +1,16 @@
+[
+  {
+    "clubId": "arsenal",
+    "searches": [
+      { "q": "Arsenal Highbury stadium", "imageType": "stadium" },
+      { "q": "Arsenal Stadium Highbury", "imageType": "stadium" },
+      { "q": "Highbury North Bank supporters", "imageType": "terrace" },
+      { "q": "Arsenal fans terraces Highbury", "imageType": "supporters" },
+      { "q": "Clock End Highbury Arsenal", "imageType": "terrace" },
+      { "q": "Highbury football ground", "imageType": "place" },
+      { "q": "\"Woolwich Arsenal\" stadium", "imageType": "place" },
+      { "q": "Arsenal Stadium Highbury", "imageType": "stadium", "decade": 1990 },
+      { "q": "Highbury Arsenal supporters", "imageType": "supporters", "decade": 2000 }
+    ]
+  }
+]

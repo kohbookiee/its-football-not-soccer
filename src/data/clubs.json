@@ -1,0 +1,461 @@
+[
+  {
+    "id": "arsenal",
+    "name": "Arsenal",
+    "rawNames": [
+      "Arsenal"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "coventry",
+    "name": "Coventry",
+    "rawNames": [
+      "Coventry"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "aston-villa",
+    "name": "Aston Villa",
+    "rawNames": [
+      "Aston Villa"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "qpr",
+    "name": "QPR",
+    "rawNames": [
+      "QPR"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "chelsea",
+    "name": "Chelsea",
+    "rawNames": [
+      "Chelsea"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "blackburn",
+    "name": "Blackburn",
+    "rawNames": [
+      "Blackburn"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool",
+    "rawNames": [
+      "Liverpool"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "sheffield-weds",
+    "name": "Sheffield Weds.",
+    "rawNames": [
+      "Sheffield Weds"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "manchester-city",
+    "name": "Manchester City",
+    "rawNames": [
+      "Man City"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "leeds-utd",
+    "name": "Leeds Utd.",
+    "rawNames": [
+      "Leeds"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "newcastle-utd",
+    "name": "Newcastle Utd.",
+    "rawNames": [
+      "Newcastle"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "tottenham",
+    "name": "Tottenham",
+    "rawNames": [
+      "Tottenham"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "oldham",
+    "name": "Oldham",
+    "rawNames": [
+      "Oldham"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "ipswich",
+    "name": "Ipswich",
+    "rawNames": [
+      "Ipswich"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "sheffield-utd",
+    "name": "Sheffield Utd.",
+    "rawNames": [
+      "Sheffield United"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "swindon",
+    "name": "Swindon",
+    "rawNames": [
+      "Swindon"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "southampton",
+    "name": "Southampton",
+    "rawNames": [
+      "Southampton"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "everton",
+    "name": "Everton",
+    "rawNames": [
+      "Everton"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "west-ham-utd",
+    "name": "West Ham Utd.",
+    "rawNames": [
+      "West Ham"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "wimbledon",
+    "name": "Wimbledon",
+    "rawNames": [
+      "Wimbledon"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "norwich",
+    "name": "Norwich",
+    "rawNames": [
+      "Norwich"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "manchester-utd",
+    "name": "Manchester Utd.",
+    "rawNames": [
+      "Man United"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "crystal-palace",
+    "name": "Crystal Palace",
+    "rawNames": [
+      "Crystal Palace"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "nottingham-f",
+    "name": "Nottingham F.",
+    "rawNames": [
+      "Nott'm Forest"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "leicester",
+    "name": "Leicester",
+    "rawNames": [
+      "Leicester"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "bolton",
+    "name": "Bolton",
+    "rawNames": [
+      "Bolton"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "middlesbrough",
+    "name": "Middlesbrough",
+    "rawNames": [
+      "Middlesbrough"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "derby-county",
+    "name": "Derby County",
+    "rawNames": [
+      "Derby"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "sunderland",
+    "name": "Sunderland",
+    "rawNames": [
+      "Sunderland"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "barnsley",
+    "name": "Barnsley",
+    "rawNames": [
+      "Barnsley"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "charlton",
+    "name": "Charlton",
+    "rawNames": [
+      "Charlton"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "bradford",
+    "name": "Bradford",
+    "rawNames": [
+      "Bradford"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "watford",
+    "name": "Watford",
+    "rawNames": [
+      "Watford"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "fulham",
+    "name": "Fulham",
+    "rawNames": [
+      "Fulham"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "west-bromwich",
+    "name": "West Bromwich",
+    "rawNames": [
+      "West Brom"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "birmingham",
+    "name": "Birmingham",
+    "rawNames": [
+      "Birmingham"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "wolves",
+    "name": "Wolves",
+    "rawNames": [
+      "Wolves"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "portsmouth",
+    "name": "Portsmouth",
+    "rawNames": [
+      "Portsmouth"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "wigan",
+    "name": "Wigan",
+    "rawNames": [
+      "Wigan"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "reading",
+    "name": "Reading",
+    "rawNames": [
+      "Reading"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "stoke",
+    "name": "Stoke",
+    "rawNames": [
+      "Stoke"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "hull",
+    "name": "Hull",
+    "rawNames": [
+      "Hull"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "burnley",
+    "name": "Burnley",
+    "rawNames": [
+      "Burnley"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "blackpool",
+    "name": "Blackpool",
+    "rawNames": [
+      "Blackpool"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "swansea",
+    "name": "Swansea",
+    "rawNames": [
+      "Swansea"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "cardiff",
+    "name": "Cardiff",
+    "rawNames": [
+      "Cardiff"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "bournemouth",
+    "name": "Bournemouth",
+    "rawNames": [
+      "Bournemouth"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "brighton",
+    "name": "Brighton",
+    "rawNames": [
+      "Brighton"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "huddersfield",
+    "name": "Huddersfield",
+    "rawNames": [
+      "Huddersfield"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "brentford",
+    "name": "Brentford",
+    "rawNames": [
+      "Brentford"
+    ],
+    "images": [],
+    "terrace": null
+  },
+  {
+    "id": "luton",
+    "name": "Luton",
+    "rawNames": [
+      "Luton"
+    ],
+    "images": [],
+    "terrace": null
+  }
+]
