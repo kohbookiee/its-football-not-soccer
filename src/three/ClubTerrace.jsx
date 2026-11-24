@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from "react"
+import { Component, Suspense, useEffect, useRef, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { useTexture } from "@react-three/drei"
 import { DoubleSide, SRGBColorSpace } from "three"
@@ -136,6 +136,22 @@ function PhotoField({ images, paused, onSelect, onOpen }) {
   )
 }
 
+class SpaceGuard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { failed: false }
+  }
+
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+
+  render() {
+    if (this.state.failed) return null
+    return this.props.children
+  }
+}
+
 export default function ClubTerrace({ club, archive, history, seasonRow, seasonLabel, onBack }) {
   const images = archive?.images ?? []
   const [index, setIndex] = useState(0)
@@ -166,21 +182,23 @@ export default function ClubTerrace({ club, archive, history, seasonRow, seasonL
 
   return (
     <section className={enlarged ? "terrace is-enlarged" : "terrace"}>
-      <Canvas camera={{ position: [0, 0.08, CAMERA_Z], fov: 58 }} dpr={[1, 1.5]}>
-        <color attach="background" args={["#07080b"]} />
-        <fog attach="fog" args={["#07080b", 7, 24]} />
-        <Flight paused={enlarged} />
-        {count > 0 && (
-          <Suspense fallback={null}>
-            <PhotoField
-              images={images}
-              paused={enlarged}
-              onSelect={setIndex}
-              onOpen={() => setEnlarged(true)}
-            />
-          </Suspense>
-        )}
-      </Canvas>
+      <SpaceGuard>
+        <Canvas camera={{ position: [0, 0.08, CAMERA_Z], fov: 58 }} dpr={[1, 1.5]}>
+          <color attach="background" args={["#07080b"]} />
+          <fog attach="fog" args={["#07080b", 7, 24]} />
+          <Flight paused={enlarged} />
+          {count > 0 && (
+            <Suspense fallback={null}>
+              <PhotoField
+                images={images}
+                paused={enlarged}
+                onSelect={setIndex}
+                onOpen={() => setEnlarged(true)}
+              />
+            </Suspense>
+          )}
+        </Canvas>
+      </SpaceGuard>
       <ArchiveHud
         club={club}
         archive={archive}

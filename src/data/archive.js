@@ -3,6 +3,13 @@ import { seasons } from "./seasons"
 
 const LOCAL_FILE = /^\/(?:archive\/[a-z0-9-]+\/[a-z0-9-]+|img\/[a-z0-9-]+)\.(?:jpe?g|png)$/
 
+function publicSrc(src) {
+  if (typeof src !== "string" || !src.startsWith("/")) return src
+  const base = import.meta.env.BASE_URL || "/"
+  if (base === "/") return src
+  return `${base.replace(/\/$/, "")}${src}`
+}
+
 function isShowable(image, clubId) {
   if (!image || image.clubId !== clubId || !LOCAL_FILE.test(image.src)) return false
   if (image.verification === "supplied") return true
@@ -16,8 +23,8 @@ function presentImage(image) {
     id: image.id,
     clubId: image.clubId,
     title: image.title,
-    src: image.src,
-    card: image.card || image.src,
+    src: publicSrc(image.src),
+    card: publicSrc(image.card || image.src),
     pageUrl: image.pageUrl,
     author: image.author || null,
     license: image.license,
@@ -35,7 +42,7 @@ function presentVideo(video, clubId) {
   if (typeof video.src !== "string" || !video.src.startsWith(`/archive/${clubId}/`)) return null
   return {
     title: video.title,
-    src: video.src,
+    src: publicSrc(video.src),
     pageUrl: video.pageUrl,
     license: video.license,
     licenseUrl: video.licenseUrl,
