@@ -1,3 +1,5 @@
+import { homeFor } from "../data/homes"
+
 const COLUMNS = [
   ["p", "P"],
   ["w", "W"],
@@ -35,17 +37,21 @@ export default function LeagueTable({ season, selectedClubId, onSelectClub }) {
           <ol className="board">
             {rows.map((row) => {
               const selected = row.clubId === selectedClubId
+              const home = homeFor(row.clubId)
               return (
                 <li key={row.clubId}>
                   <button
                     type="button"
                     className={selected ? "is-selected" : undefined}
                     aria-pressed={selected}
-                    aria-label={`Open the ${row.club} archive, ${row.pos}, ${row.pts} points`}
+                    aria-label={`Open the ${row.club} archive${home ? `, ${home}` : ""}, ${row.pos}, ${row.pts} points`}
                     onClick={() => onSelectClub(row)}
                   >
                     <span className="pos">{row.pos}</span>
-                    <span className="club">{row.club}</span>
+                    <span className="club">
+                      <span className="club-name">{row.club}</span>
+                      {home ? <span className="club-home">{home}</span> : null}
+                    </span>
                     {COLUMNS.map(([key]) => (
                       <span key={key} className={key === "pts" ? "stat pts" : "stat"}>
                         {key === "gd" ? formatGd(row[key]) : row[key]}

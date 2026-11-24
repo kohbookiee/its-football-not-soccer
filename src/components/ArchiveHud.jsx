@@ -1,3 +1,5 @@
+import { homeFor } from "../data/homes"
+
 function ordinal(value) {
   const mod = value % 100
   if (mod >= 11 && mod <= 13) return `${value}TH`
@@ -26,30 +28,51 @@ function Sparkline({ history }) {
   const first = history[0]
   const last = history[history.length - 1]
   return (
-    <svg
-      className="archive-spark"
-      viewBox={`0 0 ${width} ${height}`}
-      role="img"
-      aria-label={`League place from ${first.label} ${ordinal(first.pos)} to ${last.label} ${ordinal(last.pos)}`}
-    >
-      <polyline points={points} />
-    </svg>
+    <div className="archive-spark">
+      <span>{first.startYear}</span>
+      <svg
+        className="archive-spark-line"
+        viewBox={`0 0 ${width} ${height}`}
+        role="img"
+        aria-label={`League place from ${first.label} ${ordinal(first.pos)} to ${last.label} ${ordinal(last.pos)}`}
+      >
+        <polyline points={points} />
+      </svg>
+      <span>{last.startYear}</span>
+    </div>
   )
 }
 
-function SourceLine({ image }) {
+function sourceLabel(url) {
+  try {
+    const host = new URL(url).hostname
+    if (host.endsWith("wikimedia.org")) return "Wikimedia Commons"
+    if (host === "are.na" || host.endsWith(".are.na")) return "Are.na"
+  } catch {
+    return "Source"
+  }
+  return "Source"
+}
+
+function SourceBits({ image }) {
   return (
-    <p className="archive-caption">
+    <>
       <span>{image.imageType}</span>
       <span>{image.title}</span>
-      <span>{image.author || "Author unconfirmed"}</span>
-      <a href={image.licenseUrl} target="_blank" rel="noreferrer noopener">
-        {image.license}
-      </a>
-      <a href={image.pageUrl} target="_blank" rel="noreferrer noopener">
-        Wikimedia Commons
-      </a>
-    </p>
+      {image.author ? <span>{image.author}</span> : null}
+      {image.licenseUrl ? (
+        <a href={image.licenseUrl} target="_blank" rel="noreferrer noopener">
+          {image.license}
+        </a>
+      ) : (
+        <span>Added for this archive</span>
+      )}
+      {image.pageUrl ? (
+        <a href={image.pageUrl} target="_blank" rel="noreferrer noopener">
+          {sourceLabel(image.pageUrl)}
+        </a>
+      ) : null}
+    </>
   )
 }
 
@@ -62,12 +85,11 @@ export default function ArchiveHud({
   seasonRow,
   seasonLabel,
   onBack,
-  onPrev,
-  onNext,
   onEnlarge,
 }) {
   const images = archive?.images ?? []
   const video = archive?.video ?? null
+  const home = homeFor(club?.id)
 
   return (
     <div className="archive-frame">
@@ -80,42 +102,23 @@ export default function ArchiveHud({
       </div>
 
       <div className="archive-stage">
-        {images.length > 1 ? (
-          <button type="button" className="archive-switch" onClick={onPrev}>
-            PREV
-          </button>
+        {image ? (
+          <aside className="archive-note">
+            <p>{image.captureYear ?? "Year unconfirmed"}</p>
+            <p className="archive-note-copy">
+              <SourceBits image={image} />
+            </p>
+            <button type="button" className="archive-switch" onClick={onEnlarge}>
+              ENLARGE
+            </button>
+            {video ? (
+              <a className="archive-video" href={video.src} target="_blank" rel="noreferrer noopener">
+                Licensed match clip
+              </a>
+            ) : null}
+          </aside>
         ) : (
-          <span />
-        )}
-        <div className="archive-center">
-          {image ? (
-            <>
-              <button
-                type="button"
-                className="archive-feature"
-                onClick={onEnlarge}
-                aria-label={`Enlarge ${image.title}`}
-              >
-                <img src={image.src} alt="" />
-                <span className="archive-year">{image.captureYear ?? "Year unconfirmed"}</span>
-              </button>
-              <SourceLine image={image} />
-              {video ? (
-                <a className="archive-video" href={video.src} target="_blank" rel="noreferrer noopener">
-                  Licensed match clip
-                </a>
-              ) : null}
-            </>
-          ) : (
-            <p className="archive-empty">No approved photographs for this club yet.</p>
-          )}
-        </div>
-        {images.length > 1 ? (
-          <button type="button" className="archive-switch" onClick={onNext}>
-            NEXT
-          </button>
-        ) : (
-          <span />
+          <p className="archive-empty">No photographs for this club yet.</p>
         )}
       </div>
 
@@ -123,6 +126,10 @@ export default function ArchiveHud({
         <div className="archive-stat">
           <strong>{seasonRow ? ordinal(seasonRow.pos) : "—"}</strong>
           <span>PLACE · {seasonLabel}</span>
+        </div>
+        <div className="archive-stat archive-home">
+          <strong>{home ?? "—"}</strong>
+          <span>HOME</span>
         </div>
         <Sparkline history={history} />
         <div className="archive-stat">
@@ -134,11 +141,7 @@ export default function ArchiveHud({
             ? `${seasonRow.w} W   ${seasonRow.d} D   ${seasonRow.l} L   ${signed(seasonRow.gd)} GD`
             : "No table row this season"}
         </p>
-        {images.length > 0 ? (
-          <span className="archive-count">
-            {index + 1} / {images.length}
-          </span>
-        ) : null}
+        <span className="archive-count">{images.length > 0 ? `${index + 1} / ${images.length}` : "—"}</span>
       </footer>
     </div>
   )
@@ -158,14 +161,7 @@ export function ArchiveEnlarge({ image, onClose }) {
         <img src={image.src} alt={image.title} />
         <figcaption>
           <span>{image.captureYear ?? "Year unconfirmed"}</span>
-          <span>{image.title}</span>
-          <span>{image.author || "Author unconfirmed"}</span>
-          <a href={image.licenseUrl} target="_blank" rel="noreferrer noopener">
-            {image.license}
-          </a>
-          <a href={image.pageUrl} target="_blank" rel="noreferrer noopener">
-            Wikimedia Commons
-          </a>
+          <SourceBits image={image} />
         </figcaption>
       </figure>
     </div>

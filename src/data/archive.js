@@ -1,13 +1,13 @@
 import approved from "./archive/approved.json"
 import { seasons } from "./seasons"
 
-const LOCAL_IMAGE = /^\/archive\/[a-z0-9-]+\/[a-z0-9-]+\.jpe?g$/
+const LOCAL_FILE = /^\/(?:archive\/[a-z0-9-]+\/[a-z0-9-]+|img\/[a-z0-9-]+)\.(?:jpe?g|png)$/
 
-function isApprovedImage(image, clubId) {
-  if (!image || image.verification !== "approved" || image.clubId !== clubId) return false
-  if (!image.license || !image.licenseUrl || !image.pageUrl) return false
-  if (!LOCAL_IMAGE.test(image.src) || !LOCAL_IMAGE.test(image.card)) return false
-  return true
+function isShowable(image, clubId) {
+  if (!image || image.clubId !== clubId || !LOCAL_FILE.test(image.src)) return false
+  if (image.verification === "supplied") return true
+  if (image.verification !== "approved") return false
+  return Boolean(image.license && image.licenseUrl && image.pageUrl)
 }
 
 function presentImage(image) {
@@ -17,7 +17,7 @@ function presentImage(image) {
     clubId: image.clubId,
     title: image.title,
     src: image.src,
-    card: image.card,
+    card: image.card || image.src,
     pageUrl: image.pageUrl,
     author: image.author || null,
     license: image.license,
@@ -50,7 +50,7 @@ export function getArchive(clubId) {
     clubId,
     chant: typeof entry.chant === "string" ? entry.chant : null,
     video: presentVideo(entry.video, clubId),
-    images: (entry.images ?? []).filter((image) => isApprovedImage(image, clubId)).map(presentImage),
+    images: (entry.images ?? []).filter((image) => isShowable(image, clubId)).map(presentImage),
   }
 }
 

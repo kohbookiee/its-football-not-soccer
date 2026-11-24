@@ -401,15 +401,18 @@ async function materialize(picksPath) {
   console.log(approvedPath)
 }
 
-const args = process.argv.slice(2)
-if (args.includes("--self-test")) {
-  selfTest()
-} else if (args[0] === "--materialize") {
-  await materialize(args[1])
-} else {
-  const only = args[0]
-  const profiles = JSON.parse(await readFile(path.join(root, "collection", "queries.json"), "utf8"))
-  const selected = only ? profiles.filter((profile) => profile.clubId === only) : profiles
-  if (selected.length === 0) throw new Error(`No queries for ${only}`)
-  for (const profile of selected) await collectClub(profile)
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+if (isDirectRun) {
+  const args = process.argv.slice(2)
+  if (args.includes("--self-test")) {
+    selfTest()
+  } else if (args[0] === "--materialize") {
+    await materialize(args[1])
+  } else {
+    const only = args[0]
+    const profiles = JSON.parse(await readFile(path.join(root, "collection", "queries.json"), "utf8"))
+    const selected = only ? profiles.filter((profile) => profile.clubId === only) : profiles
+    if (selected.length === 0) throw new Error(`No queries for ${only}`)
+    for (const profile of selected) await collectClub(profile)
+  }
 }
